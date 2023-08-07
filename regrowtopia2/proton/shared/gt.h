@@ -408,7 +408,7 @@ void Background::InitClouds(int num_clouds) {
 		  v16 = vec.y;
 		  v29.x = vec.x;
 		  v29.y = v16;
-		  Background::DrawHill(1, &v29);
+		  Background::DrawHill(1, &v29); //well I dont Know. why ?
 	  LABEL_17:
 		  if (this->m_clouds[cloud_idx].field_10 <= 0.6) {
 			  hill_number = 2;
