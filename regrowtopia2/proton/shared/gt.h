@@ -334,6 +334,7 @@ void Background::InitClouds(int num_clouds) {
 	  if (graphics_detail <= 0.1)
 		  return;
 	  CL_Vec2f a1 = GetScreenSize();
+	  
 	  sun_scale = (float)(a1.x / 161.0) / 6.0;
 	  CL_Vec2f v36 = GetScreenSize();
 	  v7 = v36.x * 0.7;
