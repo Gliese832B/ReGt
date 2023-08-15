@@ -76,7 +76,7 @@ struct Cloud
 {
 	float field_0;
 	float field_4;
-	int field_8;
+	float  field_8;
 	int field_C;
 	float field_10;
 	int field_14;
@@ -118,7 +118,7 @@ struct Background {
 	float randomsayýidk2;
 	float m_Scale_X, m_Scale_Y;
 	int field_14;
-	CL_Rectf* field_4 = new CL_Rectf(GetScreenRect());
+	CL_Rectf* field_4;
 	CL_Rectf *v5;
 	float field_0;
 	float v6;
@@ -158,7 +158,7 @@ void Cloud::Init(Background* bk) {
 	v7 = bk->field_4;
 	field_0 = v6 + (float)(v7->left / field_10);
 	v8 = (RandomRangeFloat(0.0, (float)((float)(v7->bottom - v7->top) * 0.5) / field_10))
-		+ (float)(bk->field_4->left) / field_10;
+		+ (float)(bk->field_4->top) / field_10;
 
 	field_C = 0;
 	field_4 = v8;
@@ -173,11 +173,11 @@ void Cloud::Init(Background* bk) {
 
 }
 void Cloud::Update(Background* bk) {
-	int v4; // r7
+	float v4; // r7
 	float v5; // r6
-	float v6; // r0
+	float v6, v8; // r0
 	float v7; // r7
-	CL_Rectf* v8; // r6
+	CL_Rectf* v9; // r6
 	 // r10
 	float v10; // r8
 	float result; // r0
@@ -186,21 +186,25 @@ void Cloud::Update(Background* bk) {
 	v6 = v5 + v4 * (GetBaseApp()->GetGameTimer()->GetDelta());
 	v7 = field_10;
 	field_0 = v6;
-	v8 = bk->field_4;
-	
-	if (v6 < (float)((float)(v8->left - (float)((float)(bk->m_Scale_X * 197.0) * v7)) / v7)
-		|| v6 > (float)((float)(v8->left + (float)((float)(v8->right - v8->left) * 1.4)) / v7))
+	v8 = v6;
+	v9 = bk->field_4;
+	if (v6 < (float)((float)(*(float*)&v9->left - (float)((float)(bk->m_Scale_X * 197.0) * v7)) / v7)
+		|| (v10 = v9->left,
+			result = v6 > (float)((float)(*(float*)&v10
+				+ (float)((float)(*(float*)&v9->right - *(float*)&v10) * 1.4))
+				/ v7),
+			v8 > (float)((float)(*(float*)&v10 + (float)((float)(*(float*)&v9->right - *(float*)&v10) * 1.4)) / v7)))
 
 	
 	{
 		
 		Init(bk);
-		result = bk->field_4->left + bk->field_4->top - bk->field_4->left * 1.2
-			/ field_10; //birþeyler tersse buraya bak hata olabilir
+		result = bk->field_4->left + (bk->field_4->top - bk->field_4->top) * 1.2
+			/ field_10; 
 		field_0 = result;
 	}
 
-	Init(bk);
+	
 	
 }
 
@@ -285,6 +289,7 @@ void Background::InitClouds(int num_clouds) {
 	field8 = 0;
 	m_Scale_X = 1.0f;
 	m_Scale_Y = 1.0f;
+	field_4 = nullptr;
 	
 	
 	/*field_4->right = 0;

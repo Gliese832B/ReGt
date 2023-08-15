@@ -78,6 +78,7 @@ bool App::Init()
 
 	GetBaseApp()->SetFPSVisible(true);
 	background = new Background;
+	background->field_4 = new CL_Rectf(GetScreenRect());
 	
 	background->InitClouds(50);
 	return true;
