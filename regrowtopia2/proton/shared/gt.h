@@ -456,79 +456,79 @@ void Background::InitClouds(int num_clouds) {
 
 
   }
-void Background::DrawHill(int hillnumbers, CL_Vec2f* a3) {
-	CL_Vec2f screensize1;
-	CL_Vec2f screensize2;
-	CL_Vec2f screensize3;
-	float v7, v10, v24, v14, v15;
-	int v16;
-	float v11;
-	int x;
-	int v9;
-	int y;
-	int v13;
-	int v17;
-	
-	int v23;
-	unsigned int first_part_of_a_float;
-	Surface* v18;
-	
-	
-	CL_Vec2f v20;
-	CL_Vec2f v19;
-	screensize1 = GetScreenSize();
-	x = screensize1.x;
-	screensize2 = GetScreenSize();
-	y = screensize2.y; //v8
-	v7 = (float)(x * 0.0019531) * 512.0;
-	v9 = floorf((float)(a3->x) * (float)((float)(hillnumbers + 1) * 0.2) * m_Scale_X);
-	v23 = v9;
-	v10 = v7 + v9;
-	v24 = v10;
-	screensize3 = GetScreenSize();
-	
-	if (v10 < 0.0)
-	{
-		do
-		{
-			v11 = v10;
-			v10 = v7 + v10;
-		} while (v10 < 0.0);
-		v23 = v11;
-	}
-	if (!hillnumbers)
-		first_part_of_a_float = 0xC2000000;
-	v24 = (float)((float)(y + 2.0) - (float)((float)(x * 0.0019531) * (float)(22 * (2 - hillnumbers)))) + 1.0;
-	switch (hillnumbers) {
-	case 0:
-		v13 = -46;
-		v14 = x * 0.0019531;
+  void Background::DrawHill(int hillnumbers, CL_Vec2f* a3) {
+	  CL_Vec2f screensize1;
+	  CL_Vec2f screensize2;
+	  CL_Vec2f screensize3;
+	  float v7, v10, v24, v14, v15;
+	  int v16;
+	  float v11;
+	  int x;
+	  int v9;
+	  int y;
+	  int v13;
+	  int v17;
 
-	LABEL_13:
-		v24 = (float)(y + 2.0) + (float)(v14 * v13);
-		break;
-	case 1:
-		v14 = x * 0.0019531;
-		v13 = 60.0;
-		goto LABEL_13;
-	case 2:
-		v24 = y + 2.0;
-		break;
-	}
-	v15 = v23;
-	if (v23 <= x) {
-		v16 = hillnumbers;
-		v17 = v24;
-		do
-		{
-			v18 = &this->m_hills[v16];
-			v19.x = x * 0.0019531;
-			v19.y = x * 0.0019531;
-			v18->BlitScaled(v15, v17, v19, ALIGNMENT_UPPER_LEFT, -1, 0, 0);
-			v15 = v15 + v7;
-		} while (x >= v15);
-	}
-}
+	  int v23;
+	  unsigned int first_part_of_a_float;
+	  Surface* v18;
+
+
+	  CL_Vec2f v20;
+	  CL_Vec2f v19;
+	  screensize1 = GetScreenSize();
+	  x = screensize1.x;
+	  screensize2 = GetScreenSize();
+	  y = screensize2.y; //v8
+	  v7 = (float)(x * 0.0019531) * 512.0;
+	  v9 = floorf((float)(a3->x) * (float)((float)(hillnumbers + 1) * 0.2) * m_Scale_X);
+	  v23 = v9;
+	  v10 = v7 + v9;
+
+	  screensize3 = GetScreenSize();
+
+	  if (v10 < 0.0)
+	  {
+		  do
+		  {
+			  v11 = v10;
+			  v10 = v7 + v10;
+		  } while (v10 < 0.0);
+		  v23 = v11;
+	  }
+	  if (!hillnumbers)
+		  first_part_of_a_float = 0xC2000000;
+	  v24 = (float)((float)(y + 2.0) - (float)((float)(x * 0.0019531) * (float)(22 * (2 - hillnumbers)))) + 1.0;
+	  switch (hillnumbers) {
+	  case 0:
+		  v13 = -46;
+		  v14 = x * 0.0019531;
+
+	  LABEL_13:
+		  v24 = (float)(y + 2.0) + (float)(v14 * v13);
+		  break;
+	  case 1:
+		  v14 = x * 0.0019531;
+		  v13 = 60.0;
+		  goto LABEL_13;
+	  case 2:
+		  v24 = y + 2.0;
+		  break;
+	  }
+	  v15 = v23;
+	  if (v23 <= x) {
+		  v16 = hillnumbers;
+		  v17 = v24;
+		  do
+		  {
+			  v18 = &this->m_hills[v16];
+			  v19.x = x * 0.0019531;
+			  v19.y = x * 0.0019531;
+			  v18->BlitScaled(v15, v17, v19, ALIGNMENT_DOWN_LEFT, -1, 0, 0);
+			  v15 = v15 + v7;
+		  } while (x >= v15);
+	  }
+  }
 void Background::SortClouds() {
 	unsigned int nCloudsMinus1; // r6
 	int v2; // r4
