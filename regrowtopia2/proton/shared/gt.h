@@ -565,3 +565,16 @@ void Background::SortClouds() {
 	}
 	while (!bChangedAnything);
 }
+void MainMenuCreate(Entity* pParentEnt) {
+	// When you create the button
+	Entity* pMyButton = CreateTextButtonEntity(pParentEnt, "Play", 430, 300, "Play Online", false);
+	
+	AddBMPRectAroundEntity(pMyButton, -68966913, -68966913, iPadMapX(20.0), true, 300.0f, FONT_SMALL);
+	SetTextShadowColor(pMyButton, 0x96);
+	Entity* pMySettings = CreateTextButtonEntity(pParentEnt, "Settings", 450, 375, "Settings", false);
+	
+	AddBMPRectAroundEntity(pMySettings, -68966913, -68966913, iPadMapX(20.0), true, 300.0f, FONT_SMALL);
+	SetTextShadowColor(pMySettings, 0x96);
+
+
+}

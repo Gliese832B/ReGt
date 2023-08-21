@@ -411,17 +411,7 @@ void App::Draw()
 	AddFocusIfNeeded(pGUI);
 	
 	
-	// When you create the button
-	Entity* pMyButton = CreateTextButtonEntity(pGUI, "Play", 430, 300, "Play Online", false);
-	pMyButton->GetFunction("OnButtonSelected")->sig_function.connect(&OnButtonSelect);
-	AddBMPRectAroundEntity(pMyButton, -68966913, -68966913, iPadMapX(20.0), true, 300.0f, FONT_SMALL);
-	SetTextShadowColor(pMyButton, 0x96);
-	Entity* pMySettings = CreateTextButtonEntity(pGUI, "Settings", 450, 375, "Settings", false);
-	pMySettings->GetFunction("OnButtonSelected")->sig_function.connect(&OnButtonSelect);
-	AddBMPRectAroundEntity(pMySettings, -68966913, -68966913, iPadMapX(20.0), true, 300.0f, FONT_SMALL);
-	SetTextShadowColor(pMySettings, 0x96);
-
-	
+	MainMenuCreate(pGUI);
 	CL_Vec2f vec(3, 3);
 	
 	background->Render(vec, 1.0f);
