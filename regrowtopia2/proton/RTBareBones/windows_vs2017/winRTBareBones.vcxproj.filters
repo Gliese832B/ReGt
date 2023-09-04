@@ -381,9 +381,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\source\App.h">
-      <Filter>source</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\shared\win\app\main.h">
       <Filter>source</Filter>
     </ClInclude>
@@ -675,6 +672,9 @@
     <ClInclude Include="..\..\shared\gt.h">
       <Filter>source</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\App.h">
+      <Filter>source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\OSX\RTBareBones-Info.plist">
@@ -778,10 +778,12 @@
     <Text Include="..\linux\CMakeLists.txt">
       <Filter>source\linux</Filter>
     </Text>
-    <Text Include="..\..\license.txt" />
     <Text Include="..\..\Programmer Readme.txt" />
     <Text Include="..\AndroidGradle\app\src\main\cpp\CMakeLists.txt">
       <Filter>source\AndroidGradle</Filter>
+    </Text>
+    <Text Include="..\..\license.txt">
+      <Filter>source</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>

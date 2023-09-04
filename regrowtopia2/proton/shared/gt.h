@@ -578,3 +578,40 @@ void MainMenuCreate(Entity* pParentEnt) {
 
 
 }
+void OnlineMenuCreate(Entity* pGUI) {
+	Entity* onlinemenu = CreateOverlayEntity(pGUI, "OnlineMenu", "cache/interface/large/generic_menu.rttex", 0, 0);
+	CL_Vec2f v193, v194, v190, v192;
+	
+	CL_Vec2f a = GetScreenSize();
+	EntitySetScaleBySize(onlinemenu, a, false, false);
+	AddFocusIfNeeded(onlinemenu);
+	eFont font;
+	float fontscale = 1.0;
+	GetFontAndScaleToFitThisLinesPerScreenY(&font, &fontscale, 18.0);
+	v193 = iPadMap(45.0, 10.0);
+	v192 = iPadMap(978.0, 234.0);
+
+	float v168 = iPadMapX(280.0);
+
+
+	
+	
+	
+
+	float v7 = v193.y;
+	v193.y = v7 + iPadMapY(40.0);
+	Entity* v8 = CreateTextBoxEntity(onlinemenu, "text", v193, v192, "Enter your name, then click `$Connect`` to go online.\n", fontscale);
+	SetupTextEntity(v8, font, fontscale);
+	CL_Vec2f vSize = v8->GetVar("size2d")->GetVector2();
+	
+	float v15 = v193.y + vSize.y;
+	v193.y = v15;
+	float v17 = v193.x;
+	float v18 = v193.y;
+	Entity* v19 = CreateTextLabelEntity(onlinemenu, "name", v17, v18 + 2.0, "Name: ");
+	SetupTextEntity(v19, font, fontscale);
+	float v27 = v19->GetVar("size2d")->GetVector2().x + v193.x;
+	Entity* v30 = CreateInputTextEntity(onlinemenu, "name_input_box", v27, v193.y, "Player", iPadMapX(280.0), 0); //thanks mqhirr
+	SetupTextEntity(v30, font, fontscale);
+		
+}
