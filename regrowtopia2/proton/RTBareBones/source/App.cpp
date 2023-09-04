@@ -441,7 +441,7 @@ void App::OnEnterForeground()
 	BaseApp::OnEnterForeground();
 }
 
-const char * GetAppName() {return "BareBones";}
+const char * GetAppName() {return "GrewTopia";}
 
 //the stuff below is for android/webos builds.  Your app needs to be named like this.
 
@@ -462,6 +462,10 @@ const char * GetBundleName()
 
 bool App::OnPreInitVideo()
 {
+	/* float savex = GetPrimaryGLX();
+	float savey = GetPrimaryGLY();
+	GetBaseApp()->SetVideoMode(savex, savey, true);
+	GetBaseApp()->SetVideoMode(GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN), true);*/
 	//only called for desktop systems
 	//override in App.* if you want to do something here.  You'd have to
 	//extern these vars from main.cpp to change them...

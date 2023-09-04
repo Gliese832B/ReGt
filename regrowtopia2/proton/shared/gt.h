@@ -605,7 +605,7 @@ void OnlineMenuCreate(Entity* pGUI) {
 	CL_Vec2f vSize = v8->GetVar("size2d")->GetVector2();
 	
 	float v15 = v193.y + vSize.y;
-	v193.y = v15;
+	v193.y = v15;	
 	float v17 = v193.x;
 	float v18 = v193.y;
 	Entity* v19 = CreateTextLabelEntity(onlinemenu, "name", v17, v18 + 2.0, "Name: ");
