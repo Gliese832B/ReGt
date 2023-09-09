@@ -609,13 +609,20 @@ void OnlineMenuCreate(Entity* pGUI) {
 
 	Entity* v48 = CreateCheckbox(onlinemenu, "check_tankid", "I have a `$GrowID``", v166, v193.y, v43, font, fontscale);
 	v48->GetFunction("OnButtonSelected");
-
+	float v58 = iPadMapY(88.0);
+	Entity* v60 = CreateTextLabelEntity(onlinemenu, "tankid_name_label", v166, v58 + v193.y, "GrowID: ");
+	SetupTextEntity(v60, font, fontscale);
+	CL_Vec2f sz = v60->GetVar("size2d")->GetVector2();
+	Variant* v69 = GetApp()->db.GetVarWithDefault("tankid_name", uint32(0));
+	Entity* v70 = CreateInputTextEntity(onlinemenu, "tankid_name", v166 + sz.x, v58 + v193.y, v69->GetString(), v168, 0);
+	SetupTextEntity(v70, font, fontscale);
 }
 void MainMenuOnSelect(VariantList* a) {
 	Entity* pEntClicked = a->Get(1).GetEntity();
 	if (pEntClicked->GetName() == "Play") {
 		OnlineMenuCreate(a->Get(1).GetEntity()->GetParent());
 		SlideScreen(a->Get(1).GetEntity()->GetParent(), true);
+		
 
 		
 	}	
