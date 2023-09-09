@@ -30,6 +30,7 @@ public:
 	//we'll wire these to connect to some signals we care about
 	void OnAccel(VariantList *pVList);
 	void OnArcadeInput(VariantList *pVList);
+	VariantDB db;
 
 private:
 

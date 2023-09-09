@@ -565,30 +565,19 @@ void Background::SortClouds() {
 	}
 	while (!bChangedAnything);
 }
-void MainMenuCreate(Entity* pParentEnt) {
-	// When you create the button
-	Entity* pMyButton = CreateTextButtonEntity(pParentEnt, "Play", 430, 300, "Play Online", false);
-	
-	AddBMPRectAroundEntity(pMyButton, -68966913, -68966913, iPadMapX(20.0), true, 300.0f, FONT_SMALL);
-	SetTextShadowColor(pMyButton, 0x96);
-	Entity* pMySettings = CreateTextButtonEntity(pParentEnt, "Settings", 450, 375, "Settings", false);
-	
-	AddBMPRectAroundEntity(pMySettings, -68966913, -68966913, iPadMapX(20.0), true, 300.0f, FONT_SMALL);
-	SetTextShadowColor(pMySettings, 0x96);
 
-
-}
 void OnlineMenuCreate(Entity* pGUI) {
 	Entity* onlinemenu = CreateOverlayEntity(pGUI, "OnlineMenu", "cache/interface/large/generic_menu.rttex", 0, 0);
 	CL_Vec2f v193, v194, v190, v192;
 	
 	CL_Vec2f a = GetScreenSize();
 	EntitySetScaleBySize(onlinemenu, a, false, false);
-	AddFocusIfNeeded(onlinemenu);
+	
 	eFont font;
 	float fontscale = 1.0;
 	GetFontAndScaleToFitThisLinesPerScreenY(&font, &fontscale, 18.0);
-	v193 = iPadMap(45.0, 10.0);
+	
+	 v193 = iPadMap(45.0, 10.0);
 	v192 = iPadMap(978.0, 234.0);
 
 	float v168 = iPadMapX(280.0);
@@ -611,7 +600,39 @@ void OnlineMenuCreate(Entity* pGUI) {
 	Entity* v19 = CreateTextLabelEntity(onlinemenu, "name", v17, v18 + 2.0, "Name: ");
 	SetupTextEntity(v19, font, fontscale);
 	float v27 = v19->GetVar("size2d")->GetVector2().x + v193.x;
-	Entity* v30 = CreateInputTextEntity(onlinemenu, "name_input_box", v27, v193.y, "Player", iPadMapX(280.0), 0); //thanks mqhirr
+	Entity* v30 = CreateInputTextEntity(onlinemenu, "name_input_box", v27, v193.y, "Gliese", iPadMapX(280.0), 0); 
 	SetupTextEntity(v30, font, fontscale);
+	float v166 = (iPadMapX(512.0));
+	
+	
+	Variant* v43 = GetApp()->db.GetVarWithDefault("tankid_checkbox", uint32(0));
+
+	Entity* v48 = CreateCheckbox(onlinemenu, "check_tankid", "I have a `$GrowID``", v166, v193.y, v43, font, fontscale);
+	v48->GetFunction("OnButtonSelected");
+
+}
+void MainMenuOnSelect(VariantList* a) {
+	Entity* pEntClicked = a->Get(1).GetEntity();
+	if (pEntClicked->GetName() == "Play") {
+		OnlineMenuCreate(a->Get(1).GetEntity()->GetParent());
+		SlideScreen(a->Get(1).GetEntity()->GetParent(), true);
+
 		
+	}	
+
+}
+void MainMenuCreate(Entity* pGUI) {
+	// When you create the button
+	Entity* pMyButton = CreateTextButtonEntity(pGUI, "Play", 430, 300, "Play Online", false);
+	pMyButton->GetShared()->GetFunction("OnButtonSelected")->sig_function.connect(&MainMenuOnSelect);
+	//pMyButton->GetFunction("OnButtonClicked")->sig_function.connect(OnlineMenuCreate);
+	//pMyButton->GetFunction("OnButtonClicked")->sig_function(a);
+	AddBMPRectAroundEntity(pMyButton, -68966913, -68966913, iPadMapX(20.0), true, 300.0f, FONT_SMALL);
+	SetTextShadowColor(pMyButton, 0x96);
+	Entity* pMySettings = CreateTextButtonEntity(pGUI, "Settings", 450, 375, "Settings", false);
+
+	AddBMPRectAroundEntity(pMySettings, -68966913, -68966913, iPadMapX(20.0), true, 300.0f, FONT_SMALL);
+	SetTextShadowColor(pMySettings, 0x96);
+
+
 }

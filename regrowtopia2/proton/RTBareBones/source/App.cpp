@@ -73,8 +73,8 @@ bool App::Init()
 #endif
 #ifndef C_NO_ZLIB
 	//fonts need zlib to decompress.  When porting a new platform I define C_NO_ZLIB and add zlib support later sometimes
-	if (!GetFont(FONT_SMALL)->Load("interface/font_century_gothic.rtfont")) return false;
-	if (!GetFont(FONT_LARGE)->Load("interface/font_century_gothic_big.rtfont")) return false;
+	if (!GetFont(FONT_SMALL)->Load("interface/font_century_gothicx2.rtfont")) return false;
+	if (!GetFont(FONT_LARGE)->Load("interface/font_century_gothic_bigx2.rtfont")) return false;
 #endif
 
 	GetBaseApp()->SetFPSVisible(true);
@@ -364,6 +364,12 @@ void App::Update()
 		//MESSAGE_TYPE_GUI_CHAR which is just the down and includes keyboard repeats from
 		//holding the key
 		GetBaseApp()->m_sig_raw_keyboard.connect(&AppInputRawKeyboard);
+		Entity* pGUI = GetEntityRoot()->AddEntity(new Entity("GUI"));
+		AddFocusIfNeeded(pGUI);
+
+		
+		MainMenuCreate(pGUI);
+		//OnlineMenuCreate(pGUI);
 		
 	}
 	background->Update();
@@ -408,12 +414,7 @@ void App::Draw()
 
 	
 	DrawFilledRect(0, 0, GetScreenSizeXf(), GetScreenSizeYf(), MAKE_RGBA(255, 253, 208, 255)); 
-	Entity* pGUI = GetEntityRoot()->AddEntity(new Entity("GUI"));	
-	AddFocusIfNeeded(pGUI);
 	
-	
-	//MainMenuCreate(pGUI);
-	OnlineMenuCreate(pGUI);
 	CL_Vec2f vec(3, 3);
 	
 	background->Render(vec, 1.0f);
@@ -462,10 +463,9 @@ const char * GetBundleName()
 
 bool App::OnPreInitVideo()
 {
-	/* float savex = GetPrimaryGLX();
+	 float savex = GetPrimaryGLX();
 	float savey = GetPrimaryGLY();
-	GetBaseApp()->SetVideoMode(savex, savey, true);
-	GetBaseApp()->SetVideoMode(GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN), true);*/
+	
 	//only called for desktop systems
 	//override in App.* if you want to do something here.  You'd have to
 	//extern these vars from main.cpp to change them...
