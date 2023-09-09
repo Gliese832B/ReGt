@@ -616,6 +616,23 @@ void OnlineMenuCreate(Entity* pGUI) {
 	Variant* v69 = GetApp()->db.GetVarWithDefault("tankid_name", uint32(0));
 	Entity* v70 = CreateInputTextEntity(onlinemenu, "tankid_name", v166 + sz.x, v58 + v193.y, v69->GetString(), v168, 0);
 	SetupTextEntity(v70, font, fontscale);
+	EntityComponent* v75 = v70->GetComponentByName("InputTextRender", 0);
+	Variant* v76 = v75->GetShared()->GetVar("inputType");
+	float v90 = v90 = iPadMapY(80.0);
+	float v91 = v58 + v193.y + v90;
+	Entity* v92 = CreateTextLabelEntity(onlinemenu, "tankid_password_label", v166, v91, "Password: ");
+	SetupTextEntity(v92, font, fontscale);
+	CL_Vec2f sz2 = v92->GetVar("size2d")->GetVector2();
+	Variant* pass = GetApp()->db.GetVarWithDefault("tankid_password", uint32(0));
+	Entity* v102 = CreateInputTextEntity(onlinemenu, "tankid_password", v166 + sz2.x, v91, pass->GetString(), v168, 0);
+	SetupTextEntity(v102, font, fontscale);
+	float v117 = iPadMapY(90.0) + v91;
+	v193.y = v117;
+	Entity* v118 = CreateTextBoxEntity(onlinemenu, "text", v193, v192, "Enter your name, then click `wConnect`` to go online.\n"
+		"\n"
+		"An optional `$GrowID`` lets you use you play on multiple devices without losing your stuff.  To get one, `$Connect``"
+		" without one, then choose the `$Get GrowID`` option from the pause menu.  It's free!", fontscale);
+	SetupTextEntity(v118, font, fontscale);
 }
 void MainMenuOnSelect(VariantList* a) {
 	Entity* pEntClicked = a->Get(1).GetEntity();
@@ -623,7 +640,7 @@ void MainMenuOnSelect(VariantList* a) {
 		OnlineMenuCreate(a->Get(1).GetEntity()->GetParent());
 		SlideScreen(a->Get(1).GetEntity()->GetParent(), true);
 		
-
+		
 		
 	}	
 
