@@ -368,7 +368,8 @@ void App::Update()
 		GetBaseApp()->m_sig_raw_keyboard.connect(&AppInputRawKeyboard);
 		Entity* pGUI = GetEntityRoot()->AddEntity(new Entity("GUI"));
 	
-		AddFocusIfNeeded(pGUI);
+	
+		AddFocusIfNeeded(GetEntityRoot());
 
 		
 		MainMenuCreate(pGUI);

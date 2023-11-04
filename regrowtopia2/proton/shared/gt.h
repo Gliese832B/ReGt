@@ -566,7 +566,7 @@ void Background::SortClouds() {
 	while (!bChangedAnything);
 }
 void CreateLogOverlay(CL_Vec2f* a1, CL_Vec2f* a2, int a3) {
-	Entity* v5 = GetEntityRoot()->GetEntityByName("GUI");
+	Entity* v5 = GetEntityRoot();
 	Entity* v6 = new Entity("ConsoleLogParent");
 	Entity* v133 = v5->AddEntity(v6);
 	float v8, v9;
