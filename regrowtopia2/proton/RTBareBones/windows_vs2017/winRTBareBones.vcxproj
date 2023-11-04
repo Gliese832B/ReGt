@@ -1731,6 +1731,7 @@
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\source\App.cpp" />
+    <ClCompile Include="GameLogic.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\shared\android\AndroidUtils.h" />
@@ -1831,6 +1832,7 @@
     <ClInclude Include="..\..\shared\win\powerVR\OGLES\Include\GLES\gl.h" />
     <ClInclude Include="..\..\shared\win\WinUtils.h" />
     <ClInclude Include="..\source\App.h" />
+    <ClInclude Include="GameLogic.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\shared\android\v2_src\java\BillingReceiver.java" />

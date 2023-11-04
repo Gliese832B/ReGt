@@ -1,7 +1,6 @@
 #include "PlatformPrecomp.h"
 #include "ArcadeInputComponent.h"
 #include "util/GLESUtils.h"
-#include "Entity/EntityUtils.h"
 #include "BaseApp.h"
 
 void MoveButtonState::OnPress(int timeToAddMS, boost::signal<void (VariantList*)> *pCustomSignal, bool bSendChange)

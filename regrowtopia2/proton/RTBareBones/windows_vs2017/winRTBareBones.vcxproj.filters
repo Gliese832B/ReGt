@@ -379,6 +379,9 @@
     <ClCompile Include="..\..\shared\Entity\EmitVirtualKeyComponent.cpp">
       <Filter>shared\Entity\Component</Filter>
     </ClCompile>
+    <ClCompile Include="GameLogic.cpp">
+      <Filter>shared\Entity\Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\shared\win\app\main.h">
@@ -674,6 +677,9 @@
     </ClInclude>
     <ClInclude Include="..\source\App.h">
       <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLogic.h">
+      <Filter>shared\Entity\Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

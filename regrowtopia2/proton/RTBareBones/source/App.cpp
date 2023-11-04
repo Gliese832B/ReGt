@@ -10,7 +10,7 @@
 #include "Entity/CustomInputComponent.h" //used for the back button (android)
 #include "Entity/FocusInputComponent.h" //needed to let the input component see input messages
 #include "Entity/ArcadeInputComponent.h"
-
+#include "../windows_vs2017/GameLogic.h"
 //#include "util/TextScanner.h"
 #include "Manager/MessageManager.h"
 MessageManager g_messageManager;
@@ -336,9 +336,11 @@ void App::Update()
 		pComp->GetVar("keycode")->Set(uint32(VIRTUAL_KEY_BACK));
 		//attach our function so it is called when the back key is hit
 		pComp->GetFunction("OnActivated")->sig_function.connect(1, boost::bind(&App::OnExitApp, this, _1));
+		Entity* GameLogic = GetEntityRoot()->AddEntity(new Entity("GameLogic"));
 
 		//nothing will happen unless we give it input f		ocus
 		pEnt->AddComponent(new FocusInputComponent);
+		GameLogic->AddComponent(new GameLogicComponent);
 
 		//ACCELTEST:  To test the accelerometer uncomment below: (will print values to the debug output)
 		//SetAccelerometerUpdateHz(25); //default is 0, disabled
@@ -365,6 +367,7 @@ void App::Update()
 		//holding the key
 		GetBaseApp()->m_sig_raw_keyboard.connect(&AppInputRawKeyboard);
 		Entity* pGUI = GetEntityRoot()->AddEntity(new Entity("GUI"));
+	
 		AddFocusIfNeeded(pGUI);
 
 		

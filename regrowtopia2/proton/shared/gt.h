@@ -565,7 +565,100 @@ void Background::SortClouds() {
 	}
 	while (!bChangedAnything);
 }
+void CreateLogOverlay(CL_Vec2f* a1, CL_Vec2f* a2, int a3) {
+	Entity* v5 = GetEntityRoot()->GetEntityByName("GUI");
+	Entity* v6 = new Entity("ConsoleLogParent");
+	Entity* v133 = v5->AddEntity(v6);
+	float v8, v9;
+	v8 = a1->x;
+	v9 = a1->y;
+	float v10 = a2->y;
+	CL_Vec2f v167, v168;
+	v167.x = a2->x;
+	v168.x = v8;
+	v168.y = v9;
+	v167.y = v10;
+	Entity* v125 = CreateOverlayRectEntity(v133, v168, v167, -1619187808);
+	v125->SetName("LogRectBG");
+	ResourceManager* v12 = GetResourceManager();
+	SurfaceAnim* v13 = v12->GetSurfaceAnim("cache/game/gui_box_white.rttex", 1);
+	v13->SetupAnimBySize(10, 10);
+	EntityComponent* v15 = v125->GetComponentByName("RectRender");
+	Variant* v16 = v15->GetVar("bmpBorderFileName");
 
+	v16->Set("cache/game/gui_box_white.rttex");	
+	EntityComponent* v20 = v125->GetComponentByName("RectRender");
+	Variant* v21 = v20->GetVar("borderColor");
+	v21->Set(uint32(-860321793));
+	Entity* v25 = new Entity("ConsoleLog");
+	Entity* v26 = v125->AddEntity(v25);
+
+
+
+
+
+}
+
+void InitLog() {
+	Entity* v0 = GetEntityRoot();
+	v0->RemoveEntityByNameSafe("ConsoleLogParent", 1);
+	Entity* v2 = GetEntityRoot();
+	Entity* v3 = v2->GetEntityByName("GameLogic");
+	CL_Vec2f v17, v14, v11, v13, v12, v10, a2;
+	v17.x, v17.y = 0;
+	CL_Vec2f v18 = iPadMap(v17);
+	v14.x = 934.0;
+	v14.y = 350.0;
+	float v5, v6;
+	CL_Vec2f v15 = iPadMap(v14);
+	if (IsLargeScreen()) {
+		 v5 = v15.x;
+		 v6 = v15.y;
+
+	}
+	else {
+		v12.x = 904.0;
+		v12.y = 350.0;
+		v11 = iPadMap(v12);
+		v5 = v11.x;
+		v6 = v11.y;
+		v15 = v11;
+	}
+	v10 = v18;
+	a2.x = v5;
+	a2.y = v6;
+	CreateLogOverlay(&v10, &a2, 1);
+	CL_Vec2f v8 = GetScreenSize();
+	
+	SetSize2DEntity(v3, v8);
+
+
+}
+void InitConnection() {
+	
+	Entity* v3 = GetEntityRoot();
+	Entity* v4 = v3->GetEntityByName("GUI");
+	Entity* v84 = CreateOverlayEntity(v4, "InitConnection", "cache/interface/large/generic_menu.rttex", 0, 0);
+	CL_Vec2f v132 = GetScreenSize();
+	EntitySetScaleBySize(v84, v132, 0, 0);
+	SlideScreen(v84, 1, 500, 0);
+	InitLog();
+
+}
+void OnlineMenuOnSelect(VariantList* var) {
+	Entity* pEntClicked = var->Get(1).GetEntity();
+	DisableAllButtonsEntity(pEntClicked->GetParent(), 1);
+	if (pEntClicked->GetName() == "Start") {
+		
+		SlideScreen(var->Get(1).GetEntity()->GetParent(), true);
+		InitConnection();
+		
+		
+
+
+	}
+
+}
 void OnlineMenuCreate(Entity* pGUI) {
 	Entity* onlinemenu = CreateOverlayEntity(pGUI, "OnlineMenu", "cache/interface/large/generic_menu.rttex", 0, 0);
 	CL_Vec2f v193, v194, v190, v192;
@@ -589,11 +682,9 @@ void OnlineMenuCreate(Entity* pGUI) {
 
 	float v7 = v193.y;
 	v193.y = v7 + iPadMapY(40.0);
-	Entity* v8 = CreateTextBoxEntity(onlinemenu, "text", v193, v192, "Enter your name, then click `$Connect`` to go online.\n", fontscale);
-	SetupTextEntity(v8, font, fontscale);
-	CL_Vec2f vSize = v8->GetVar("size2d")->GetVector2();
 	
-	float v15 = v193.y + vSize.y;
+	
+	float v15 = v193.y;
 	v193.y = v15;	
 	float v17 = v193.x;
 	float v18 = v193.y;
@@ -633,6 +724,27 @@ void OnlineMenuCreate(Entity* pGUI) {
 		"An optional `$GrowID`` lets you use you play on multiple devices without losing your stuff.  To get one, `$Connect``"
 		" without one, then choose the `$Get GrowID`` option from the pause menu.  It's free!", fontscale);
 	SetupTextEntity(v118, font, fontscale);
+	CL_Vec2f sz3 = v118->GetVar("size2d")->GetVector2();
+	float v125 = v193.y + sz3.y;
+	v193.y = v125;
+	v193.y = iPadMapY(10.0) + v125;
+	GetFontAndScaleToFitThisLinesPerScreenY(&font, &fontscale, 9.0);
+	float v167 = iPadMapY(20.0);
+	float v127, v128, v139, v140;
+	v127 = iPadMapX(600.0);
+	v128 = iPadMapY(630.0);
+	Entity* v129 = CreateTextButtonEntity(onlinemenu, "Start", v127, v128, "Connect", 0);
+	v129->GetShared()->GetFunction("OnButtonSelected")->sig_function.connect(&OnlineMenuOnSelect);
+	SetupTextEntity(v129, font, fontscale);
+	AddBMPRectAroundEntity(v129, -860321793, -860321793, v167, 1, fontscale, font);
+	SetTextShadowColor(v129, 0x96u);
+	v139 = iPadMapX(100.0);
+	v140 = iPadMapY(630.0);
+	Entity* v141 = CreateTextButtonEntity(onlinemenu, "Back", v139, v140, "Back", 0);
+	SetupTextEntity(v141, font, fontscale);
+	AddBMPRectAroundEntity(v141, -860321793, -860321793, v167, 1, fontscale, font);
+	SetTextShadowColor(v141, 0x96u);
+
 }
 void MainMenuOnSelect(VariantList* a) {
 	Entity* pEntClicked = a->Get(1).GetEntity();
