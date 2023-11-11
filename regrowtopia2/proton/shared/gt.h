@@ -5,6 +5,7 @@
 #include "Entity/Entity.h"
 #include "Entity/EntityUtils.h"
 #include "cloud.h"
+#include "Entity/LogDisplayComponent.h"
 Entity* AddBMPRectAroundEntity(Entity* pParentEnt, int backgroundColor, int borderColor, float padding, bool UseUpWhite, float scale, eFont font) {
 		CL_Vec2f pos2d; 
 		CL_Vec2f size2d;
@@ -565,6 +566,14 @@ void Background::SortClouds() {
 	}
 	while (!bChangedAnything);
 }
+int GetLogTextScale() {
+	int v0;
+	int result;
+	v0 = EnforceMinimumFontLineToScreenRatio(FONT_SMALL, 1.0f, 20.000000);
+	result = v0;
+	return result;
+
+}
 void CreateLogOverlay(CL_Vec2f* a1, CL_Vec2f* a2, int a3) {
 	Entity* v5 = GetEntityRoot();
 	Entity* v6 = new Entity("ConsoleLogParent");
@@ -591,8 +600,26 @@ void CreateLogOverlay(CL_Vec2f* a1, CL_Vec2f* a2, int a3) {
 	Variant* v21 = v20->GetVar("borderColor");
 	v21->Set(uint32(-860321793));
 	Entity* v25 = new Entity("ConsoleLog");
-	Entity* v26 = v125->AddEntity(v25);
+	LogDisplayComponent* display = new LogDisplayComponent;
 
+	Entity* v26 = v125->AddEntity(v25);
+	v26->AddComponent(display);
+	CL_Vec2f v28 = v26->GetVar("pos2d")->GetVector2();
+	v28.x = 3;
+	v28.y = 10.0;
+	v28.x = 10.0;
+
+		
+	
+	CL_Vec2f v27 = v26->GetVar("size2d")->GetVector2();
+	
+	float v34 = a2->x - 28.0;
+	float v35 = a2->y - 20.0;
+	v27.x = v34;
+	v27.y = v35; 
+
+	int v38 = GetLogTextScale();
+	SetupTextEntity(v26, FONT_SMALL, v38);
 
 
 
@@ -607,7 +634,7 @@ void InitLog() {
 	CL_Vec2f v17, v14, v11, v13, v12, v10, a2;
 	v17.x, v17.y = 0;
 	CL_Vec2f v18 = iPadMap(v17);
-	v14.x = 934.0;
+	v14.x = 935.0;
 	v14.y = 350.0;
 	float v5, v6;
 	CL_Vec2f v15 = iPadMap(v14);
@@ -748,6 +775,7 @@ void OnlineMenuCreate(Entity* pGUI) {
 }
 void MainMenuOnSelect(VariantList* a) {
 	Entity* pEntClicked = a->Get(1).GetEntity();
+	DisableAllButtonsEntity(pEntClicked->GetParent(), 1);
 	if (pEntClicked->GetName() == "Play") {
 		OnlineMenuCreate(a->Get(1).GetEntity()->GetParent());
 		SlideScreen(a->Get(1).GetEntity()->GetParent(), true);

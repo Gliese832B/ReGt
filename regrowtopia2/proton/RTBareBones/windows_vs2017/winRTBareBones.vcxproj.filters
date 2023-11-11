@@ -382,6 +382,9 @@
     <ClCompile Include="GameLogic.cpp">
       <Filter>shared\Entity\Component</Filter>
     </ClCompile>
+    <ClCompile Include="LogDisplayComponent.cpp">
+      <Filter>shared\Entity\Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\shared\win\app\main.h">
@@ -679,6 +682,9 @@
       <Filter>source</Filter>
     </ClInclude>
     <ClInclude Include="GameLogic.h">
+      <Filter>shared\Entity\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="LogDisplayComponent.h">
       <Filter>shared\Entity\Component</Filter>
     </ClInclude>
   </ItemGroup>
