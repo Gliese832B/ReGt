@@ -620,8 +620,7 @@ void CreateLogOverlay(CL_Vec2f* a1, CL_Vec2f* a2, int a3) {
 
 	int v38 = GetLogTextScale();
 	SetupTextEntity(v26, FONT_SMALL, v38);
-	Variant v218;
-	v218.Set("");
+
 
 
 
