@@ -579,7 +579,7 @@ void CreateLogOverlay(CL_Vec2f* a1, CL_Vec2f* a2, int a3) {
 	Entity* v6 = new Entity("ConsoleLogParent");
 	Entity* v133 = v5->AddEntity(v6);
 	float v8, v9;
-	v8 = a1->x;
+	v8 = a1->x;	
 	v9 = a1->y;
 	float v10 = a2->y;
 	CL_Vec2f v167, v168;
@@ -620,6 +620,8 @@ void CreateLogOverlay(CL_Vec2f* a1, CL_Vec2f* a2, int a3) {
 
 	int v38 = GetLogTextScale();
 	SetupTextEntity(v26, FONT_SMALL, v38);
+	Variant v218;
+	v218.Set("");
 
 
 
@@ -787,16 +789,28 @@ void MainMenuOnSelect(VariantList* a) {
 }
 void MainMenuCreate(Entity* pGUI) {
 	// When you create the button
-	Entity* pMyButton = CreateTextButtonEntity(pGUI, "Play", 430, 300, "Play Online", false);
+	float v14 = GetScreenSizeXf() * 0.5;
+	float v15 = iPadMapY(20.0);
+	Entity* v16 = CreateOverlayEntity(pGUI, "MainLogo", "cache/interface/large/game_title.rttex", v14, v15);
+	SetAlignmentEntity(v16, ALIGNMENT_UPPER_CENTER);
+	CL_Vec2f v140;
+	v140.x = GetScreenSizeXf() * 0.8;
+	v140.y = GetScreenSizeYf() * 0.4;
+	EntitySetScaleBySize(v16, v140);
+	CL_Vec2f v139;
+	v139.x = 0;
+	v139.y = v140.y + (iPadMapY(20.0));
+	ZoomToPositionFromThisOffsetEntity(v16, v139, 1000, INTERPOLATE_EASE_TO, 200);
+	Entity* pMyButton = CreateTextButtonEntity(pGUI, "Play", 430, 350, "Play Online", false);
 	pMyButton->GetShared()->GetFunction("OnButtonSelected")->sig_function.connect(&MainMenuOnSelect);
 	//pMyButton->GetFunction("OnButtonClicked")->sig_function.connect(OnlineMenuCreate);
 	//pMyButton->GetFunction("OnButtonClicked")->sig_function(a);
 	AddBMPRectAroundEntity(pMyButton, -68966913, -68966913, iPadMapX(20.0), true, 300.0f, FONT_SMALL);
 	SetTextShadowColor(pMyButton, 0x96);
-	Entity* pMySettings = CreateTextButtonEntity(pGUI, "Settings", 450, 375, "Settings", false);
+	Entity* pMySettings = CreateTextButtonEntity(pGUI, "Settings", 450, 425, "Settings", false);
 
 	AddBMPRectAroundEntity(pMySettings, -68966913, -68966913, iPadMapX(20.0), true, 300.0f, FONT_SMALL);
 	SetTextShadowColor(pMySettings, 0x96);
 
-
+	
 }
