@@ -283,7 +283,7 @@ public:
 		SetDefaults();
 		//our special copy won't include the sig crap, that stuff can't be copied
 		*this = v;
-	}
+	}	
 
 
 	Variant & operator= (const Variant &rhs)
