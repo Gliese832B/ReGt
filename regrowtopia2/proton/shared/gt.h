@@ -567,14 +567,16 @@ void Background::SortClouds() {
 	}
 	while (!bChangedAnything);
 }
-int GetLogTextScale() {
-	int v0;
-	int result;
-	v0 = EnforceMinimumFontLineToScreenRatio(FONT_SMALL, 1.0f, 20);
-	result = v0;
-	return result;
 
-}
+	float GetLogTextScale()
+	{
+		if (IsTabletSize())
+			return EnforceMinimumFontLineToScreenRatio(FONT_SMALL, 1.0f, 30.0f);
+		else
+			return EnforceMinimumFontLineToScreenRatio(FONT_SMALL, 1.0f, 20.0f);
+	}
+
+
 void CreateLogOverlay(CL_Vec2f* a1, CL_Vec2f* a2, int a3) {
 	Entity* v5 = GetEntityRoot();
 	Entity* v6 = new Entity("ConsoleLogParent");
@@ -622,9 +624,9 @@ void CreateLogOverlay(CL_Vec2f* a1, CL_Vec2f* a2, int a3) {
 
 	int v38 = GetLogTextScale();
 	SetupTextEntity(v26, FONT_SMALL, v38);
-
+	
 	VariantList v223;
-	v223.m_variant[0].Set("sa");
+	v223.m_variant[0].Set("sdadadasd");
 
 	
 	VariantList* v134;
@@ -634,9 +636,10 @@ void CreateLogOverlay(CL_Vec2f* a1, CL_Vec2f* a2, int a3) {
 	
 
 
-
-	display->GetFunction("AddLine")->sig_function(v134);
+	for(int i = 0;i<100; i++) display->GetFunction("AddLine")->sig_function(v134);
 	display->GetVar("enableScrolling")->Set(uint32(1));
+	display->GetParent()->GetEntityByName("Scrollbar")->GetVar("color")->Set(uint32(-1989377));
+	
 }
 
 void InitLog() {
