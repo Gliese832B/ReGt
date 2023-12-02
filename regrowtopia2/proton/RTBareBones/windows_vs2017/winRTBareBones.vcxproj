@@ -1144,6 +1144,7 @@
     <ClCompile Include="..\..\shared\Entity\FocusUpdateComponent.cpp" />
     <ClCompile Include="..\..\shared\Entity\InputTextRenderComponent.cpp" />
     <ClCompile Include="..\..\shared\Entity\InterpolateComponent.cpp" />
+    <ClCompile Include="..\..\shared\Entity\LogDisplayComponent.cpp" />
     <ClCompile Include="..\..\shared\Entity\OverlayRenderComponent.cpp" />
     <ClCompile Include="..\..\shared\Entity\RectRenderComponent.cpp" />
     <ClCompile Include="..\..\shared\Entity\RenderScissorComponent.cpp" />
@@ -1153,6 +1154,7 @@
     <ClCompile Include="..\..\shared\Entity\SliderComponent.cpp" />
     <ClCompile Include="..\..\shared\Entity\TextBoxRenderComponent.cpp" />
     <ClCompile Include="..\..\shared\Entity\TextRenderComponent.cpp" />
+    <ClCompile Include="..\..\shared\Entity\TouchDragComponent.cpp" />
     <ClCompile Include="..\..\shared\Entity\TouchHandlerComponent.cpp" />
     <ClCompile Include="..\..\shared\Entity\TouchStripComponent.cpp" />
     <ClCompile Include="..\..\shared\Entity\TyperComponent.cpp" />
@@ -1732,7 +1734,6 @@
     </ClCompile>
     <ClCompile Include="..\source\App.cpp" />
     <ClCompile Include="GameLogic.cpp" />
-    <ClCompile Include="LogDisplayComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\shared\android\AndroidUtils.h" />
@@ -1763,6 +1764,7 @@
     <ClInclude Include="..\..\shared\Entity\FocusRenderComponent.h" />
     <ClInclude Include="..\..\shared\Entity\InputTextRenderComponent.h" />
     <ClInclude Include="..\..\shared\Entity\InterpolateComponent.h" />
+    <ClInclude Include="..\..\shared\Entity\LogDisplayComponent.h" />
     <ClInclude Include="..\..\shared\Entity\OverlayRenderComponent.h" />
     <ClInclude Include="..\..\shared\Entity\RectRenderComponent.h" />
     <ClInclude Include="..\..\shared\Entity\RenderScissorComponent.h" />
@@ -1771,6 +1773,7 @@
     <ClInclude Include="..\..\shared\Entity\SliderComponent.h" />
     <ClInclude Include="..\..\shared\Entity\TextBoxRenderComponent.h" />
     <ClInclude Include="..\..\shared\Entity\TextRenderComponent.h" />
+    <ClInclude Include="..\..\shared\Entity\TouchDragComponent.h" />
     <ClInclude Include="..\..\shared\Entity\TouchHandlerComponent.h" />
     <ClInclude Include="..\..\shared\Entity\TyperComponent.h" />
     <ClInclude Include="..\..\shared\Entity\UnderlineRenderComponent.h" />
@@ -1834,7 +1837,6 @@
     <ClInclude Include="..\..\shared\win\WinUtils.h" />
     <ClInclude Include="..\source\App.h" />
     <ClInclude Include="GameLogic.h" />
-    <ClInclude Include="LogDisplayComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\shared\android\v2_src\java\BillingReceiver.java" />

@@ -31,6 +31,7 @@ public:
 	void OnAccel(VariantList *pVList);
 	void OnArcadeInput(VariantList *pVList);
 	VariantDB db;
+	Console* console = new Console;
 
 private:
 

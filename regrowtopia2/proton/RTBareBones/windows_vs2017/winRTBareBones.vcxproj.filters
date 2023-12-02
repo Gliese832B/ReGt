@@ -382,7 +382,10 @@
     <ClCompile Include="GameLogic.cpp">
       <Filter>shared\Entity\Component</Filter>
     </ClCompile>
-    <ClCompile Include="LogDisplayComponent.cpp">
+    <ClCompile Include="..\..\shared\Entity\LogDisplayComponent.cpp">
+      <Filter>shared\Entity\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared\Entity\TouchDragComponent.cpp">
       <Filter>shared\Entity\Component</Filter>
     </ClCompile>
   </ItemGroup>
@@ -684,7 +687,10 @@
     <ClInclude Include="GameLogic.h">
       <Filter>shared\Entity\Component</Filter>
     </ClInclude>
-    <ClInclude Include="LogDisplayComponent.h">
+    <ClInclude Include="..\..\shared\Entity\LogDisplayComponent.h">
+      <Filter>shared\Entity\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared\Entity\TouchDragComponent.h">
       <Filter>shared\Entity\Component</Filter>
     </ClInclude>
   </ItemGroup>
