@@ -119,6 +119,9 @@
     <Filter Include="source\AndroidGradle">
       <UniqueIdentifier>{a0c6b63a-ee33-4876-a42b-9012c11e75bc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="shared\Net">
+      <UniqueIdentifier>{02628f49-4a52-4fbc-a7c4-a58d02e92cf5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\source\App.cpp">
@@ -387,6 +390,18 @@
     </ClCompile>
     <ClCompile Include="..\..\shared\Entity\TouchDragComponent.cpp">
       <Filter>shared\Entity\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared\Entity\HTTPComponent.cpp">
+      <Filter>shared\Entity\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared\Network\NetHTTP.cpp">
+      <Filter>shared\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared\Network\NetSocket.cpp">
+      <Filter>shared\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared\Network\NetUtils.cpp">
+      <Filter>shared\Net</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -692,6 +707,18 @@
     </ClInclude>
     <ClInclude Include="..\..\shared\Entity\TouchDragComponent.h">
       <Filter>shared\Entity\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared\Entity\HTTPComponent.h">
+      <Filter>shared\Entity\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared\Network\NetHTTP.h">
+      <Filter>shared\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared\Network\NetSocket.h">
+      <Filter>shared\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared\Network\NetUtils.h">
+      <Filter>shared\Net</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

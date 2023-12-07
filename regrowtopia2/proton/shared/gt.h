@@ -5,8 +5,10 @@
 #include "Entity/Entity.h"
 #include "Entity/EntityUtils.h"
 #include "cloud.h"
-
+#include "Entity/HTTPComponent.h"
 #include "Entity/LogDisplayComponent.h"
+#include "enet/enet.h"
+#include "util/TextScanner.h"
 Entity* AddBMPRectAroundEntity(Entity* pParentEnt, int backgroundColor, int borderColor, float padding, bool UseUpWhite, float scale, eFont font) {
 		CL_Vec2f pos2d; 
 		CL_Vec2f size2d;
@@ -626,7 +628,7 @@ void CreateLogOverlay(CL_Vec2f* a1, CL_Vec2f* a2, int a3) {
 	SetupTextEntity(v26, FONT_SMALL, v38);
 	
 	VariantList v223;
-	v223.m_variant[0].Set("sdadadasd");
+	v223.m_variant[0].Set("");
 
 	
 	VariantList* v134;
@@ -641,7 +643,32 @@ void CreateLogOverlay(CL_Vec2f* a1, CL_Vec2f* a2, int a3) {
 	display->GetParent()->GetEntityByName("Scrollbar")->GetVar("color")->Set(uint32(-1989377));
 	
 }
+void LogToConsoleSafe(std::string text) {
+	Entity* v1 = GetEntityRoot()->GetEntityByName("ConsoleLog");
+	if (v1) {
 
+		VariantList v223;
+		v223.m_variant[0].Set(text);
+
+
+		VariantList* v134;
+		v134 = &v223;
+		EntityComponent* display = v1->GetComponentByName("LogDisplay");
+		display->GetFunction("AddLine")->sig_function(v134);
+
+
+
+	}
+}
+void LogToConsole(const char* fmt, ...) {
+	char buf[4096];
+	va_list vl;
+	va_start(vl, fmt);
+	memset(buf, 0, 4096);
+	vsnprintf(buf, 4096, fmt, vl);
+	va_end(vl);
+	LogToConsoleSafe(std::string(buf));
+}
 void InitLog() {
 	Entity* v0 = GetEntityRoot();
 	v0->RemoveEntityByNameSafe("ConsoleLogParent", 1);
@@ -677,16 +704,125 @@ void InitLog() {
 
 
 }
-void InitConnection() {
+void ServerinfoOnerror(VariantList* a1) {
+	LogToConsole("`4Connection timed out. Try Later?");
+}
+void ServerHTTPinfo(VariantList* a1) {
+	TextScanner t(a1->Get(1).GetString().c_str());
+	LogMsg(a1->Get(1).GetString().c_str());
+	std::string server =  t.GetParmString("server", 1);
+	std::string port = t.GetParmString("port",1);
+	LogMsg(server.c_str());
+
+	std:: string maint = t.GetParmString("maint", 1);
+	LogToConsole("Located `wserver``, connecting...``");
+	ENetHost* Client = GetApp()->client;
+	Client = enet_host_create(NULL /* create a client host */,
+		1 /* only allow 1 outgoing connection */,
+		2 /* allow up 2 channels to be used, 0 and 1 */,
+		0 /* assume any amount of incoming bandwidth */,
+		0 /* assume any amount of outgoing bandwidth */);
+	if (Client) {
+		
+
+		Client->checksum = enet_crc32;
+		ENetAddress address;
+		int porti = stoi(port);
+
+		enet_host_compress_with_range_coder(Client);
+		enet_address_set_host(&address, server.c_str());
+		address.port = porti;
+
+		ENetPeer* peer = enet_host_connect(Client, &address, 2, 0);
+		if (peer) {
+			enet_host_flush(Client);
+
+
+		}
+		else {
+			LogMsg("No available peers for initiating an ENet connection.");
+
+		}
+	}
+	else {
+		LogMsg("An error occurred while trying to create an ENet client host.");
+	}
+
 	
+
+
+	
+	
+}
+void InitConnection() {
+	InitLog();
+	HTTPComponent* http;
+	LogToConsole("`oGetting `wserver address``...");
+	GetEntityRoot()->RemoveEntityByNameSafe("InitConnection", true);
 	Entity* v3 = GetEntityRoot();
 	Entity* v4 = v3->GetEntityByName("GUI");
 	Entity* v84 = CreateOverlayEntity(v4, "InitConnection", "cache/interface/large/generic_menu.rttex", 0, 0);
 	CL_Vec2f v132 = GetScreenSize();
 	EntitySetScaleBySize(v84, v132, 0, 0);
 	SlideScreen(v84, 1, 500, 0);
-	InitLog();
+	
+	
+	http = new HTTPComponent;
+	EntityComponent* v78 = v84->AddComponent(http);
 
+	VariantList v80;
+	v80.m_variant[0].Set("version");
+	std::string version = GetApp()->GetAppVersion();
+	v80.m_variant[1].Set(version);
+
+	VariantList* v134;
+	v134 = &v80;
+
+	
+	v78->GetFunction("AddPostData")->sig_function(v134);
+
+	VariantList v81;
+	v81.m_variant[0].Set("platform");
+	
+	v81.m_variant[1].Set(toString(GetEmulatedPlatformID()));
+	VariantList* v135;
+	v135 = &v81;
+	v78->GetFunction("AddPostData")->sig_function(v135);
+	VariantList v82;
+	v82.m_variant[0].Set("protocol");
+
+	v82.m_variant[1].Set(toString(200));
+	VariantList* v136;
+	v136 = &v82;
+	v78->GetFunction("AddPostData")->sig_function(v136);
+	std::string a = "growtopiagame.com";
+	 int a3;
+	 a3 = 80;
+	 VariantList v;
+	 v.m_variant[0].Set("creativeps.eu");
+	 v.m_variant[1].Set((uint32)a3);
+	 v.m_variant[2].Set("growtopia/server_data.php");
+	 v.m_variant[3].Set(uint32(NetHTTP::END_OF_DATA_SIGNAL_RTSOFT_MARKER));
+	 VariantList* v137;
+	 v137 = &v;
+	 v78->GetFunction("Init")->sig_function(v137);
+
+	 v78->GetFunction("OnError")->sig_function.connect(&ServerinfoOnerror);
+	 v78->GetFunction("OnFinish")->sig_function.connect(&ServerHTTPinfo);
+	 eFont font;
+	 float fontscale = 1.0;
+	 GetFontAndScaleToFitThisLinesPerScreenY(&font, &fontscale, 9.0);
+	 int v49 = iPadMapX(100.0);
+	 int v72 = iPadMapY(630.0);
+	 Entity* v73 = CreateTextButtonEntity(v84, "Cancel", v49, v72, "Cancel", false);
+	 SetupTextEntity(v73, font, fontscale);
+	 AddBMPRectAroundEntity(v73, -860321793, -860321793, iPadMapY(20.0), 1, fontscale, font);
+
+
+
+	
+
+	
 }
 void OnlineMenuOnSelect(VariantList* var) {
 	Entity* pEntClicked = var->Get(1).GetEntity();

@@ -8,6 +8,7 @@
 #pragma once
 
 #include "BaseApp.h"
+#include "enet/enet.h"
 
 class App: public BaseApp
 {
@@ -32,6 +33,9 @@ public:
 	void OnArcadeInput(VariantList *pVList);
 	VariantDB db;
 	Console* console = new Console;
+	ENetHost* client;
+
+
 
 private:
 
