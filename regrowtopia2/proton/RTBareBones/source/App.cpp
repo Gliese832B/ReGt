@@ -11,6 +11,7 @@
 #include "Entity/FocusInputComponent.h" //needed to let the input component see input messages
 #include "Entity/ArcadeInputComponent.h"
 #include "../windows_vs2017/GameLogic.h"
+#include "ENetClient.h"
 //#include "util/TextScanner.h"
 #include "Manager/MessageManager.h"
 MessageManager g_messageManager;

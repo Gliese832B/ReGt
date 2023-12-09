@@ -716,38 +716,7 @@ void ServerHTTPinfo(VariantList* a1) {
 
 	std:: string maint = t.GetParmString("maint", 1);
 	LogToConsole("Located `wserver``, connecting...``");
-	ENetHost* Client = GetApp()->client;
-	Client = enet_host_create(NULL /* create a client host */,
-		1 /* only allow 1 outgoing connection */,
-		2 /* allow up 2 channels to be used, 0 and 1 */,
-		0 /* assume any amount of incoming bandwidth */,
-		0 /* assume any amount of outgoing bandwidth */);
-	if (Client) {
-		
-
-		Client->checksum = enet_crc32;
-		ENetAddress address;
-		int porti = stoi(port);
-
-		enet_host_compress_with_range_coder(Client);
-		enet_address_set_host(&address, server.c_str());
-		address.port = porti;
-
-		ENetPeer* peer = enet_host_connect(Client, &address, 2, 0);
-		if (peer) {
-			enet_host_flush(Client);
-
-
-		}
-		else {
-			LogMsg("No available peers for initiating an ENet connection.");
-
-		}
-	}
-	else {
-		LogMsg("An error occurred while trying to create an ENet client host.");
-	}
-
+	GetApp()->client->Init(GetApp()->client->client, server.c_str(), stoi(port));
 	
 
 

@@ -830,6 +830,9 @@
     <Text Include="..\..\license.txt">
       <Filter>source</Filter>
     </Text>
+    <Text Include="..\..\shared\ENetClient.h">
+      <Filter>source</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="..\AndroidGradle\app\src\main\AndroidManifest.xml">

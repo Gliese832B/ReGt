@@ -9,7 +9,7 @@
 
 #include "BaseApp.h"
 #include "enet/enet.h"
-
+#include "ENetClient.h"
 class App: public BaseApp
 {
 public:
@@ -33,7 +33,7 @@ public:
 	void OnArcadeInput(VariantList *pVList);
 	VariantDB db;
 	Console* console = new Console;
-	ENetHost* client;
+	ENetClient* client = new ENetClient;
 
 
 

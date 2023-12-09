@@ -1884,6 +1884,7 @@
   <ItemGroup>
     <Text Include="..\..\license.txt" />
     <Text Include="..\..\Programmer Readme.txt" />
+    <Text Include="..\..\shared\ENetClient.h" />
     <Text Include="..\AndroidGradle\app\src\main\cpp\CMakeLists.txt" />
     <Text Include="..\linux\CMakeLists.txt" />
   </ItemGroup>
