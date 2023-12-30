@@ -34,9 +34,11 @@ public:
 	VariantDB db;
 	Console* console = new Console;
 	ENetClient* client = new ENetClient;
+	std::string GetSmartFileName(std::string* a, std::string a2, std::string a3);
+	std::string GetCachedFileName(std::string* a, std::string a2, std::string a3);
+	
 
-
-
+	ItemInfoManager* ItemManager;
 private:
 
 	bool m_bDidPostInit;

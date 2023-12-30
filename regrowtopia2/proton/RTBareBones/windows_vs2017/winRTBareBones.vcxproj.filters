@@ -403,6 +403,12 @@
     <ClCompile Include="..\..\shared\Network\NetUtils.cpp">
       <Filter>shared\Net</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\shared\ItemManager.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared\ItemInfo.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\shared\win\app\main.h">
@@ -719,6 +725,12 @@
     </ClInclude>
     <ClInclude Include="..\..\shared\Network\NetUtils.h">
       <Filter>shared\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared\ItemManager.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared\ItemInfo.h">
+      <Filter>source</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

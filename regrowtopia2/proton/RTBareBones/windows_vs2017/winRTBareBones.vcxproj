@@ -1304,6 +1304,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Software GL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Software GL|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\shared\ItemInfo.cpp" />
+    <ClCompile Include="..\..\shared\ItemManager.cpp" />
     <ClCompile Include="..\..\shared\linux\LinuxMain.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Common Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Common Debug|x64'">true</ExcludedFromBuild>
@@ -1800,6 +1802,8 @@
     <ClInclude Include="..\..\shared\iOS\app\MyViewController.h" />
     <ClInclude Include="..\..\shared\iOS\iOSUtils.h" />
     <ClInclude Include="..\..\shared\iOS\PlatformSetupIOS.h" />
+    <ClInclude Include="..\..\shared\ItemInfo.h" />
+    <ClInclude Include="..\..\shared\ItemManager.h" />
     <ClInclude Include="..\..\shared\linux\LinuxUtils.h" />
     <ClInclude Include="..\..\shared\linux\PlatformSetupLinux.h" />
     <ClInclude Include="..\..\shared\Manager\Console.h" />

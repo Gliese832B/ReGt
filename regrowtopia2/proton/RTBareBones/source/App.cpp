@@ -12,11 +12,12 @@
 #include "Entity/ArcadeInputComponent.h"
 #include "../windows_vs2017/GameLogic.h"
 #include "ENetClient.h"
+#include "ItemManager.h"
 //#include "util/TextScanner.h"
 #include "Manager/MessageManager.h"
 MessageManager g_messageManager;
 MessageManager * GetMessageManager() {return &g_messageManager;}
-
+#include "ItemInfo.h"
 FileManager g_fileManager;
 FileManager * GetFileManager() {return &g_fileManager;}
 #include "Entity/EntityUtils.h"
@@ -482,4 +483,9 @@ bool App::OnPreInitVideo()
 	
 	//g_winVideoScreenY = 768;
 	return true; //no error
+}
+std::string App::GetCachedFileName(std::string* a, std::string a2, std::string a3) {
+	std::string v7 = ReplaceMP3(a3);
+
+
 }
