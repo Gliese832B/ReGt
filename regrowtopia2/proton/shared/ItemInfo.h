@@ -1,6 +1,6 @@
 #pragma once
 #include "PlatformPrecomp.h"
-#include "App.h"
+
 #include "util/TextScanner.h"
 #include <vector>
 class ItemInfo {
@@ -8,9 +8,9 @@ public:
 	int field_0;
 	int field_4;
 	int field_8;
-	int field_C;
+	std::string m_name;
 	unsigned int field_10;
-	int field_14;
+	std::string field_14;
 	int field_18;
 	unsigned int field_1C;
 	unsigned char field_20;
@@ -55,16 +55,56 @@ public:
 class ItemInfoManager {
 public:
 	ItemInfoManager() {
-		GetApp()->ItemManager = new ItemInfoManager;
+		field_4 = 0;
+		field_10 = 0;
+		//kiss my ass NEX I wont rename
 
 	}
 	
 
-  int field_0;
+  short field_0;
   BYTE field_4;
   std::vector<ItemInfo> m_items;
   std::vector<ItemInfo> field_C;
   int field_10;
   bool LoadFromMem(unsigned __int8* a2);
-  int GetItemByName(ItemInfo* a1, std::string a2);
+  ItemInfo* GetItemByName(std::string a2);
+
+  ItemInfo* GetItemByIDSafe(int itemid);
+};
+ class InventoryItem
+{
+public:
+	short itemId;
+	uint8_t amount;
+	uint8_t flag;
+	void ToggleFlag(unsigned __int8 a2);
+	static bool operator<(const InventoryItem& a, const InventoryItem& b);
+	
+};
+
+class PlayerItems {
+public:
+	PlayerItems* SetDefaultQuickTools();
+	int field_0;
+	int field_4;
+	int field_8;
+	int field_C;
+	int field_10;
+	int field_14;
+	std::list<InventoryItem> field_18;
+	
+	int field_1C;
+	uint16 field_20[4];
+	uint16 field_24;
+	int field_28;
+	InventoryItem* GetItemByID(int itemid);
+	PlayerItems() {
+		SetDefaultQuickTools();
+	}
+	int GetQuickSlotThisItemIsIn(int a2);
+	int GetCountOfAnItem(int itemid);
+	void RemoveFromQuickSlots(int a2);
+	void PrintItems(int a2);
+
 };

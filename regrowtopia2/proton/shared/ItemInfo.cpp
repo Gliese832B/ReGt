@@ -1,7 +1,9 @@
 #include "PlatformPrecomp.h"
+#include "app.h"
 #include "ItemInfo.h"
 #include "util/TextScanner.h"
 #include <vector>
+
 void ItemInfo::Serialize(unsigned __int8* a2, int a3, bool a4, unsigned __int16 a5) {
 	int v10;
 	MemorySerialize<int>(field_0, a2, a3, a4);
@@ -13,7 +15,7 @@ void ItemInfo::Serialize(unsigned __int8* a2, int a3, bool a4, unsigned __int16 
 	v14 = v9;
 	MemorySerialize<unsigned char>(v14, a2, a3, a4);
 	field_8 = v14;
-	MemorySerialize(field_C, a2, a3, a4);
+	MemorySerialize(m_name, a2, a3, a4);
 	MemorySerialize(field_14, a2, a3, a4);
 	MemorySerialize<unsigned int>(field_10, a2, a3, a4);
 	v14 = field_18;
@@ -131,9 +133,79 @@ bool ItemInfoManager::LoadFromMem(unsigned __int8* a2) {
 	return true;
 
 }
-int ItemInfoManager::GetItemByName(ItemInfo* a1, std::string a2) {
-	std::string v13;
-	v13 = ToLowerCaseString(a2);
-
+ItemInfo* ItemInfoManager::GetItemByName(std::string name) {
+	name = ToLowerCaseString(name);
+	for (size_t i = 0; i < m_items.size(); i++) {
+		std::string lowerName = ToLowerCaseString(m_items[i].m_name);
+		if (lowerName == name)
+			return &m_items[i];
+	}
+	return nullptr;
 
 }
+ItemInfo* ItemInfoManager::GetItemByIDSafe(int itemid) {
+	ItemInfo* v2 = new ItemInfo;
+	if (itemid >= 0 && itemid < m_items.size()) return &v2[itemid];
+	else return 0;
+
+}
+PlayerItems* PlayerItems::SetDefaultQuickTools() {
+	field_20[0] = 18;
+} 
+ItemInfoManager* GetItemInfoManager() { 
+	return GetApp()->ItemManager;
+
+}
+ void InventoryItem::ToggleFlag(unsigned __int8 a2) {
+	flag = a2;
+	
+}
+ InventoryItem *PlayerItems::GetItemByID(int itemid) {
+	 for (auto it = field_18.begin(); it != field_18.end(); ++it) {
+		 if (it == field_18.end()) return NULL;
+		 if (it->itemId == itemid) return &*it;	
+			 
+	
+	 }
+	 return NULL;
+
+	 
+ }
+ int PlayerItems::GetQuickSlotThisItemIsIn(int a2) {
+	 if (field_20[0] == a2) return 0;
+	 if (field_20[1] == a2)
+		 return 1;
+	 if (field_20[2] == a2)
+		 return 2;
+	 if (field_20[3] == a2)
+		 return 3;
+	 return -1;
+
+	
+ }
+ int PlayerItems::GetCountOfAnItem(int itemid) {
+	 InventoryItem* result;
+	 result = GetItemByID(itemid);
+	 if (result) {
+		 return result->amount;
+	 }
+	 return 0;
+ }
+ void PlayerItems::RemoveFromQuickSlots(int a2) {
+
+	 if (field_20[0] == a2) field_20[0] = 0;
+	 if (field_20[1] == a2) field_20[1] = 0;
+	 if (field_20[2] == a2) field_20[2] = 0;
+	 if (field_20[3] == a2) field_20[3] = 0;
+	 
+ }
+ void PlayerItems::PrintItems(int a2) {
+
+ }
+ bool InventoryItem::operator<(const InventoryItem& a, const InventoryItem& b) {
+	 ItemInfoManager* v4 = GetItemInfoManager();
+
+	 int v5 = v4->m_items[a.itemId].GetInventorySortPriority();
+	 ItemInfoManager* v6 = GetItemInfoManager();
+	 return v5 < v6->m_items[b.itemId].GetInventorySortPriority();
+ }

@@ -6,10 +6,12 @@
  */
 
 #pragma once
-
+#include "ItemInfo.h"
 #include "BaseApp.h"
 #include "enet/enet.h"
 #include "ENetClient.h"
+
+
 class App: public BaseApp
 {
 public:
@@ -38,7 +40,7 @@ public:
 	std::string GetCachedFileName(std::string* a, std::string a2, std::string a3);
 	
 
-	ItemInfoManager* ItemManager;
+	ItemInfoManager* ItemManager = new ItemInfoManager;
 private:
 
 	bool m_bDidPostInit;
