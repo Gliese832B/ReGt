@@ -1388,6 +1388,7 @@
     <ClCompile Include="..\..\shared\Manager\VariantDB.cpp" />
     <ClCompile Include="..\..\shared\Math\rtPlane.cpp" />
     <ClCompile Include="..\..\shared\Math\rtRect.cpp" />
+    <ClCompile Include="..\..\shared\NetObjectManager.cpp" />
     <ClCompile Include="..\..\shared\Network\NetHTTP.cpp" />
     <ClCompile Include="..\..\shared\Network\NetSocket.cpp" />
     <ClCompile Include="..\..\shared\Network\NetUtils.cpp" />
@@ -1811,6 +1812,7 @@
     <ClInclude Include="..\..\shared\Manager\VariantDB.h" />
     <ClInclude Include="..\..\shared\Math\rtPlane.h" />
     <ClInclude Include="..\..\shared\Math\rtRect.h" />
+    <ClInclude Include="..\..\shared\NetObjectManager.hpp" />
     <ClInclude Include="..\..\shared\Network\NetHTTP.h" />
     <ClInclude Include="..\..\shared\Network\NetSocket.h" />
     <ClInclude Include="..\..\shared\Network\NetUtils.h" />

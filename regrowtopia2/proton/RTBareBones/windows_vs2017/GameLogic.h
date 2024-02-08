@@ -1,6 +1,7 @@
 #pragma once
 #include "Entity/Component.h"
 #include "Entity/Entity.h"
+#include "ItemInfo.h"
 class GameLogicComponent : public EntityComponent {
 public:
 	GameLogicComponent();
@@ -51,7 +52,7 @@ public:
 	int field_AC;
 	int field_B0;
 	int field_B4;
-	int field_B8;
+	//PlayerItems* pitem;
 	int field_BC;
 	int field_C0;
 	int field_C4;

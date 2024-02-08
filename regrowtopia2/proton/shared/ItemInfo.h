@@ -79,13 +79,16 @@ public:
 	uint8_t amount;
 	uint8_t flag;
 	void ToggleFlag(unsigned __int8 a2);
-	static bool operator<(const InventoryItem& a, const InventoryItem& b);
+	
+
+	
+	
 	
 };
 
 class PlayerItems {
 public:
-	PlayerItems* SetDefaultQuickTools();
+	void SetDefaultQuickTools();
 	int field_0;
 	int field_4;
 	int field_8;
@@ -99,12 +102,10 @@ public:
 	uint16 field_24;
 	int field_28;
 	InventoryItem* GetItemByID(int itemid);
-	PlayerItems() {
-		SetDefaultQuickTools();
-	}
+	
 	int GetQuickSlotThisItemIsIn(int a2);
 	int GetCountOfAnItem(int itemid);
 	void RemoveFromQuickSlots(int a2);
-	void PrintItems(int a2);
+	std::string PrintItems();
 
 };

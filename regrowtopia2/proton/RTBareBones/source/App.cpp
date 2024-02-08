@@ -8,7 +8,7 @@
 #include "ItemInfo.h"
 #include "App.h"
 #include "gt.h"
-
+#include "NetObjectManager.hpp"
 #include "Entity/CustomInputComponent.h" //used for the back button (android)
 #include "Entity/FocusInputComponent.h" //needed to let the input component see input messages
 #include "Entity/ArcadeInputComponent.h"

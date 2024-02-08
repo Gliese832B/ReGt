@@ -18,14 +18,14 @@ Entity* AddBMPRectAroundEntity(Entity* pParentEnt, int backgroundColor, int bord
 		Entity* pOverlayEnt;
 		//thanks ýprog
 		int v14;
-		float scalebumbum;
+
 		float scaledeneme;
 		eAlignment entityalignment;
-		scalebumbum = 292 * font + 504;
+		
 		float y;
 		pos2d = GetPos2DEntity(pParentEnt);
 		size2d = GetSize2DEntity(pParentEnt);
-		CL_Vec2f vSize = pParentEnt->GetVar("size2d")->GetVector2();
+		
 
 	
 		y = size2d.y;
@@ -45,7 +45,7 @@ Entity* AddBMPRectAroundEntity(Entity* pParentEnt, int backgroundColor, int bord
 		size2d.x = (float)(padding + padding) + size2d.x;
 		size2d.y = (float)((float)(padding * 0.6) * 3.0) + size2d.y;
 		pos2d.x = (float)(pos2d.x - v57.x) - padding;
-		v14 = *((DWORD*)pParentEnt + 26);
+		
 		pos2d.y = (float)(pos2d.y - v57.y) - (float)(padding * 0.6);
 		v58 = pos2d;
 		v59 = size2d;

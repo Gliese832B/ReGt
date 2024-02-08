@@ -111,7 +111,7 @@ int ItemInfo::CalculateGrowImagesAndColors(int a2) {
 	field_3E = a2 % 8;
 	return result;
 }
-/* void ItemInfo::CheckItemForUpdates(ItemInfo* a1, int* a2) {
+ /* void ItemInfo::CheckItemForUpdates(ItemInfo* a1, int* a2) {
 	int v2 = a1->field_14 - 12;
 	
 
@@ -147,9 +147,9 @@ ItemInfo* ItemInfoManager::GetItemByIDSafe(int itemid) {
 	ItemInfo* v2 = new ItemInfo;
 	if (itemid >= 0 && itemid < m_items.size()) return &v2[itemid];
 	else return 0;
-
 }
-PlayerItems* PlayerItems::SetDefaultQuickTools() {
+
+ void PlayerItems::SetDefaultQuickTools() {
 	field_20[0] = 18;
 } 
 ItemInfoManager* GetItemInfoManager() { 
@@ -199,12 +199,39 @@ ItemInfoManager* GetItemInfoManager() {
 	 if (field_20[3] == a2) field_20[3] = 0;
 	 
  }
- void PlayerItems::PrintItems(int a2) {
+ std::string PlayerItems::PrintItems() {
+	 std::string a;
+	 std::string v52;
+	 auto v22 = field_18.begin();
+	 if (field_18.empty()) {
+		 a = "NONE";
+	 }
+	 else {
+		 int itemCount = 0;
+
+		 for (const InventoryItem& item : field_18)
+		 {
+			 
+			 itemCount++;
+		 }
+		 v52.reserve(itemCount);
+		 if (v22 != field_18.end()) {
+			 while (1) {
+				 ItemInfoManager* v5 = GetItemInfoManager();
+				 ItemInfo* v21 = v5->GetItemByIDSafe(v22->itemId);
+				 if (v21) break;
+				 std::string a = toString(v22->itemId);
+				 v52 + "ERROR: item " + a + " doesn't exist";
+				 break;
+			 }
+		 }
+
+	 }
+	 return v52;
 
  }
- bool InventoryItem::operator<(const InventoryItem& a, const InventoryItem& b) {
+ static bool operator<(const InventoryItem& a, const InventoryItem& b) {
 	 ItemInfoManager* v4 = GetItemInfoManager();
-
 	 int v5 = v4->m_items[a.itemId].GetInventorySortPriority();
 	 ItemInfoManager* v6 = GetItemInfoManager();
 	 return v5 < v6->m_items[b.itemId].GetInventorySortPriority();
