@@ -726,7 +726,7 @@ void ServerHTTPinfo(VariantList* a1) {
 void InitConnection() {
 	InitLog();
 	HTTPComponent* http;
-	LogToConsole("`oGetting `wserver address``...");
+	LogToConsole("`Getting Server address.");
 	GetEntityRoot()->RemoveEntityByNameSafe("InitConnection", true);
 	Entity* v3 = GetEntityRoot();
 	Entity* v4 = v3->GetEntityByName("GUI");

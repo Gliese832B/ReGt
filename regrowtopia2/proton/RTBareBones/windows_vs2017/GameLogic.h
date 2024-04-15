@@ -172,5 +172,5 @@ public:
 	int field_28C;
 	int field_290;
 	int field_294;
-
+	PlayerItems* m_pitems;
 };

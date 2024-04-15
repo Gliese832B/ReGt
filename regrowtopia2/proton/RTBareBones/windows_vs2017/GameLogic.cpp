@@ -9,6 +9,6 @@ GameLogicComponent::GameLogicComponent() {
 	field_6C = 0;
 	field_9C = 0;
 	field_A0 = 0;
-	//pitem = new PlayerItems;
+	m_pitems = new PlayerItems;
 	
 }

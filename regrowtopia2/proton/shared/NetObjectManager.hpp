@@ -1,3 +1,5 @@
+
+
 #pragma once
 #include "App.h"
 class NetBase {
@@ -6,11 +8,11 @@ public:
 	EntityComponent* field_20;
 	NetBase();
 	void SetNetID(int id);
-	
+
 };
-class NetObjectManager{
+class NetObjectManager {
 public:
-	 std::map<int, NetBase*> netmap;
+	std::map<int, NetBase*> netmap;
 
 	NetObjectManager() {
 		LogMsg("initalized netobject manager");
