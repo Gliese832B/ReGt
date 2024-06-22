@@ -26,7 +26,7 @@ void ItemInfo::Serialize(unsigned __int8* a2, int a3, bool a4, unsigned __int16 
 	MemorySerialize<unsigned char>(field_20, a2, a3, a4);
 	MemorySerialize<unsigned char>(field_21, a2, a3, a4);
 
-
+	
 	v14 = field_24;
 	MemorySerialize<unsigned char>(v14, a2, a3, a4);
 	if (a4)

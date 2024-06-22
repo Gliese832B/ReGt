@@ -1440,6 +1440,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Software GL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Software GL|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\shared\Tiles.cpp" />
     <ClCompile Include="..\..\shared\util\boost\libs\signals\src\connection.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Common Debug|Win32'">
       </PrecompiledHeader>
@@ -1739,6 +1740,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Software GL|x64'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\..\shared\World.cpp" />
     <ClCompile Include="..\source\App.cpp" />
     <ClCompile Include="GameLogic.cpp" />
   </ItemGroup>
@@ -1830,6 +1832,7 @@
     <ClInclude Include="..\..\shared\Renderer\SoftSurface.h" />
     <ClInclude Include="..\..\shared\Renderer\Surface.h" />
     <ClInclude Include="..\..\shared\Renderer\SurfaceAnim.h" />
+    <ClInclude Include="..\..\shared\Tiles.hpp" />
     <ClInclude Include="..\..\shared\util\CRandom.h" />
     <ClInclude Include="..\..\shared\util\GLESUtils.h" />
     <ClInclude Include="..\..\shared\util\MathUtils.h" />
@@ -1848,6 +1851,7 @@
     <ClInclude Include="..\..\shared\win\powerVR\OGLES\Include\GLES\egl.h" />
     <ClInclude Include="..\..\shared\win\powerVR\OGLES\Include\GLES\gl.h" />
     <ClInclude Include="..\..\shared\win\WinUtils.h" />
+    <ClInclude Include="..\..\shared\World.hpp" />
     <ClInclude Include="..\source\App.h" />
     <ClInclude Include="GameLogic.h" />
   </ItemGroup>

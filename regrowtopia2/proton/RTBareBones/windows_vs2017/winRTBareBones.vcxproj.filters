@@ -409,6 +409,12 @@
     <ClCompile Include="..\..\shared\NetObjectManager.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\shared\World.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared\Tiles.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\shared\win\app\main.h">
@@ -730,6 +736,10 @@
       <Filter>source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\shared\NetObjectManager.hpp">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared\World.hpp" />
+    <ClInclude Include="..\..\shared\Tiles.hpp">
       <Filter>source</Filter>
     </ClInclude>
   </ItemGroup>

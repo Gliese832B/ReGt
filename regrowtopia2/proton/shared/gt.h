@@ -764,7 +764,7 @@ void InitConnection() {
 	VariantList* v136;
 	v136 = &v82;
 	v78->GetFunction("AddPostData")->sig_function(v136);
-	std::string a = "growtopiagame.com";
+	std::string a = "growtopiagame.com";	
 	 int a3;
 	 a3 = 80;
 	 VariantList v;

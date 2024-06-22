@@ -57,7 +57,7 @@ public:
 	ItemInfoManager() {
 		field_4 = 0;
 		field_10 = 0;
-		//kiss my ass NEX I wont rename
+		
 
 	}
 	
