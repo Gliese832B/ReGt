@@ -415,6 +415,12 @@
     <ClCompile Include="..\..\shared\Tiles.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\shared\Packet.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared\WorldMaps.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\shared\win\app\main.h">
@@ -740,6 +746,10 @@
     </ClInclude>
     <ClInclude Include="..\..\shared\World.hpp" />
     <ClInclude Include="..\..\shared\Tiles.hpp">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\shared\Packet.hpp" />
+    <ClInclude Include="..\..\shared\WorldMaps.hpp">
       <Filter>source</Filter>
     </ClInclude>
   </ItemGroup>

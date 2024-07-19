@@ -2,6 +2,7 @@
 #include "PlatformPrecomp.h"
 
 #include "util/TextScanner.h"
+#include "App.h"
 #include <vector>
 class ItemInfo {
 public:
@@ -109,3 +110,7 @@ public:
 	std::string PrintItems();
 
 };
+ItemInfoManager* __fastcall GetItemInfoManager() {
+	return GetApp()->ItemManager;
+
+}
