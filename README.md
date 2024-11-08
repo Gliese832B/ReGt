@@ -2,7 +2,7 @@
 This project is an attempt to recreate one of the first released builds of Growtopia -- growtopia-0-92.apk -- and customizing,
 via binary reverse engineering.
 I cant continue it because of my high school but if someone wants to continue it so it is here.
-#TO-DO
+# TO-DO
 Complete GameLogicComponent
 Add NewLoginSystem(Optional)
 Complete World
