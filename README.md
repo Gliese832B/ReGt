@@ -9,6 +9,6 @@ I can't continue it because of my high school but if someone wants to continue i
 # Add NewLoginSystem(Optional)
 # Complete World
 # Fix Some bugs(You can see easily)
-#Used Techs: IDA Pro 7.5, x64dbg
+# Used Techs: IDA Pro 7.5, x64dbg
 Thanks Iprogramincpp for helps
 # NOTE: IT'S NOT THE FULL CODE I'M STILL KEEPING IT FOR MYSELF.BUT YOU CAN USE THIS ONE TOO.
