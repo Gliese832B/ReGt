@@ -18,4 +18,5 @@ I can't continue it because of my high school but if someone wants to continue i
 # NOTE: IT'S NOT THE FULL CODE I'M STILL KEEPING IT FOR MYSELF.BUT YOU CAN USE THIS ONE TOO.
 Thanks Iprogramincpp for helps
 Used Techs: IDA Pro 7.5, x64dbg
+if you have a problem please contact me: gliese832b. discord
 
