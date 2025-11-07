@@ -1,15 +1,7 @@
 # GT Reverse Engineering Project
-This project is an attempt to recreate one of the first released builds of Growtopia -- growtopia-0-92.apk -- and customizing,
+This project is an attempt to recreate one of the first released builds of ***** and customizing,
 via binary reverse engineering.
 I can't continue it because of my high school but if someone wants to continue it so it is here.
-# TO-DO
-# Complete GameLogicComponent
-
-
-# Add NewLoginSystem(Optional)
-# Complete World
-
-
 
 
 
@@ -20,3 +12,5 @@ Thanks Iprogramincpp for helps
 Used Techs: IDA Pro 7.5, x64dbg.
 If you have a problem please contact me via discord: gliese832b.
 
+This project is an independent reimplementation for educational purposes.
+It does not include or use any original assets or code
