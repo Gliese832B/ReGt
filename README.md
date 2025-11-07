@@ -14,3 +14,8 @@ If you have a problem please contact me via discord: gliese832b.
 
 This project is an independent reimplementation for educational purposes.
 It does not include or use any original assets or code
+
+# License Information
+This project is licensed under the BSD 1 clause license. However, it contains third party software with different but compatible licenses:
+Proton SDK: https://github.com/SethRobinson/proton
+ENet: https://github.com/lsalzman/enet
